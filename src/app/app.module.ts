@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
+
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule          // Singleton objects (services, components that are loaded only once)
   ],
   providers: [],
   bootstrap: [AppComponent]
