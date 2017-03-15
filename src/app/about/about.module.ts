@@ -1,9 +1,10 @@
+
 import { NgModule } from '@angular/core';
 
 import { AboutRoutingModule } from './about-routing.module';
 
 @NgModule({
     imports: [AboutRoutingModule],
-    exports: [AboutRoutingModule.components]
+    declarations: [AboutRoutingModule.components]
 })
-export class AboutMoudule { }
+export class AboutModule { }
