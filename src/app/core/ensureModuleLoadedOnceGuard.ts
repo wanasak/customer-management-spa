@@ -1,7 +1,9 @@
 export class EnsureModuleLoadedOnceGuard {
 
     constructor(targetModule: any) {
-        throw new Error(`${targetModule} has already been loaded.`);
+        if (targetModule) {
+            throw new Error(`${targetModule.constructor.name} has already been loaded. Import this module in the AppModule only.`);
+        }
     }
 
 }

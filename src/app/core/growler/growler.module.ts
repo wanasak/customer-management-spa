@@ -11,10 +11,10 @@ import { GrowlerService } from './growler.service';
     providers: [GrowlerService],
     declarations: [GrowlerComponent]
 })
-export class GrowlerModule extends EnsureModuleLoadedOnceGuard {   
+export class GrowlerModule extends EnsureModuleLoadedOnceGuard {
 
     constructor( @Optional() @SkipSelf() parentModule: GrowlerModule) {
         super(parentModule);
     }
-    
+
 }
