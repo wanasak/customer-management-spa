@@ -9,14 +9,15 @@ export class FilterService {
 
     // @items: T[] - generic list  items
     // @filterText: string - text to filter
-    // @props: string: - properties which we want to filter
+    // @props: string: - defined properties which we want to filter
 
     filter<T>(items: T[], filterText: string, props: string[]) {
         return items.filter((item: T) => {
             let match = false;
-            for (let prop of props) {
+            for (const prop of props) {
+                // if property include "."
                 if (prop.indexOf('.') > -1) {
-                    let value = PropertyResolver.resolve(prop, item);
+                    const value = PropertyResolver.resolve(prop, item);
                     if (value && value.toUpperCase().indexOf(filterText) > -1) {
                         match = true;
                         break;
