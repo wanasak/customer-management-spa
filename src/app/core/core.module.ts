@@ -7,6 +7,7 @@ import { ModalModule } from './modal/modal.module';
 /* Services */
 import { AuthService } from './services/auth.service';
 import { DataService } from './services/data.service';
+import { FilterService } from './services/filter.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -16,7 +17,7 @@ import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';    
     imports: [CommonModule, GrowlerModule, ModalModule],
     exports: [GrowlerModule, ModalModule, NavbarComponent],
     declarations: [NavbarComponent],
-    providers: [AuthService, DataService]    // This should be singleton
+    providers: [AuthService, DataService, FilterService]    // This should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {
 
