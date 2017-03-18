@@ -10,6 +10,7 @@ import { DataService } from './services/data.service';
 import { FilterService } from './services/filter.service';
 import { SorterService } from './services/sorter.service';
 import { TrackByService } from './services/trackby.service';
+import { ValidationService } from './services/validation.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -19,7 +20,7 @@ import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';    
     imports: [CommonModule, GrowlerModule, ModalModule],
     exports: [GrowlerModule, ModalModule, NavbarComponent],
     declarations: [NavbarComponent],
-    providers: [AuthService, DataService, FilterService, SorterService, TrackByService]    // This should be singleton
+    providers: [AuthService, DataService, FilterService, SorterService, TrackByService, ValidationService]    // This should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {
 
