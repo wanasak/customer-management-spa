@@ -13,7 +13,7 @@ export class SortByDirective {
     }
     @HostListener('click', ['$event']) onclick($event) {
         event.preventDefault();
-        this.sorted.next(this.sortedProperty);  // Raise clicked event
+        this.sorted.emit(this.sortedProperty);  // Raise clicked event
     }
 
     constructor() { }

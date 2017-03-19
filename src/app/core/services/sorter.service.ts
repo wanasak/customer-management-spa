@@ -6,7 +6,7 @@ import { PropertyResolver } from './property-resolver';
 export class SorterService {
 
     property: string = null;
-    direction: number = 1;
+    direction = 1;
 
     constructor() { }
 

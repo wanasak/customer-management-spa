@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row grid-container">
+        <div class="col-md-10">
+            <div class="table">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <!--sortby directive-->
+                            <th appSortBy="firstName" (sorted)="sort($event)">First Name</th>
+                            <th appSortBy="lastName" (sorted)="sort($event)">Last Name</th>
+                            <th appSortBy="address" (sorted)="sort($event)">Address</th>
+                            <th appSortBy="city" (sorted)="sort($event)">City</th>
+                            <th appSortBy="state.name" (sorted)="sort($event)">State</th>
+                            <th (click)="sort('orderTotal')">Order Total</th>
+                            <th>&nbsp;</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customers; trackBy: trackbyService.customer">
+                            <td>
+                                <img src="images/{{ customer.gender | lowercase }}.png" class="grid-image" alt="Customer Image" />
+                            </td>
+                            <td><a [routerLink]="['/customers', customer.id, 'details']">{{ customer.firstName | capitalize }}</a></td>
+                            <td>{{ customer.lastName | capitalize</td>
+                            <td>{{ customer.address }}</td>
+                            <td>{{ customer.city | trim }}</td>
+                            <td>{{ customer.state.name }}</td>
+                            <td>{{ customer.orderTotal | currency:'USD':true }}</td>
+                            <td>
+                                <a [routerLink]="['/customers', customer.id, 'orders']">
+                                    View Orders
+                                </a>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!customers.length">
+                            <td>&nbsp;</td>
+                            <td colspan="7">No Records Found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
