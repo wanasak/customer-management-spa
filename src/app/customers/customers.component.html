@@ -25,6 +25,11 @@
         </div>
 
         <!--customer-card-->
+        <app-customers-card 
+            [customers]="filteredCustomers"
+            [hidden]="displayMode !== displayModeEnum.Card">
+        </app-customers-card>
+        
         <!--customers-grid-->
         <!--pagination-->
     </div>
