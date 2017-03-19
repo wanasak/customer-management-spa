@@ -5,6 +5,7 @@ import { RouterModule, Routes, PreloadAllModules, NoPreloading } from '@angular/
 import { PreloadModulesStrategy } from './core/strategies/preload-modules.strategy';
 
 const app_routes: Routes = [
+    { path: 'customers', loadChildren: 'app/customers/customers.module#CustomersModule' },
     { path: 'about', loadChildren: 'app/about/about.module#AboutModule' } // lazy loading route
     // Custom preloading strategy
     // { path: 'about', loadChildren: 'app/about/about.module#AboutModule', data: { preload: true } }
