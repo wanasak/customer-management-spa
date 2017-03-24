@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     AppRoutingModule,
     CoreModule,          // Singleton objects (services, components that are loaded only once)
-    SharedModule        // shared (multi-instance) objects
+    SharedModule,        // shared (multi-instance) objects
+    LoginModule          // Eager loaded since we may need to go here right away as browser loads based on router user enters
   ],
   providers: [],
   bootstrap: [AppComponent]
