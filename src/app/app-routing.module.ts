@@ -8,6 +8,7 @@ const app_routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/customers' },
     { path: 'customers', loadChildren: 'app/customers/customers.module#CustomersModule' },
     { path: 'customers/:id', loadChildren: 'app/customer/customer.module#CustomerModule' },
+    { path: 'orders', loadChildren: 'app/orders/orders.module#OrdersModule' },
     { path: 'about', loadChildren: 'app/about/about.module#AboutModule' }, // lazy loading route
     // Custom preloading strategy
     // { path: 'about', loadChildren: 'app/about/about.module#AboutModule', data: { preload: true } }
