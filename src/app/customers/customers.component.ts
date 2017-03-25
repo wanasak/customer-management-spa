@@ -16,7 +16,7 @@ export class CustomersComponent implements OnInit {
     customers: ICustomer[] = [];
     filteredCustomers: ICustomer[] = [];
     displayMode: DisplayModeEnum;
-    displayModeEnum: DisplayModeEnum;
+    displayModeEnum = DisplayModeEnum;
     totalRecords = 0;
     pageSize = 10;
 
@@ -59,7 +59,7 @@ export class CustomersComponent implements OnInit {
         } else {
             this.filteredCustomers = this.customers;
         }
-    }   
+    }
 
 }
 

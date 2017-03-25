@@ -14,7 +14,7 @@ import { GrowlerService, GrowlerMessageType } from '../growler/growler.service';
 export class NavbarComponent implements OnInit, OnDestroy {
 
     isCollapsed: boolean;
-    loginLogoutText: string = 'Login';
+    loginLogoutText = 'Login';
     sub: Subscription;
 
     constructor(
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 .subscribe((status: boolean) => {
                     this.setLoginLogoutText();
                     this.growler.growl('Logged Out', GrowlerMessageType.Info);
-                    this.router.navigate(['/customer']);
+                    this.router.navigate(['/customers']);
                 }, (err: any) => console.error(err));
         }
         this.redirectToLogin();

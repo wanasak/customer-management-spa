@@ -1,5 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { GrowlerModule } from './growler/growler.module';
 import { ModalModule } from './modal/modal.module';
@@ -17,8 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';    // Prevent reimport of the CoreModule
 
 @NgModule({
-    imports: [CommonModule, GrowlerModule, ModalModule],
-    exports: [GrowlerModule, ModalModule, NavbarComponent],
+    imports: [CommonModule, GrowlerModule, ModalModule, RouterModule, HttpModule],
+    exports: [GrowlerModule, ModalModule, NavbarComponent, RouterModule, HttpModule],
     declarations: [NavbarComponent],
     providers: [AuthService, DataService, FilterService, SorterService, TrackByService, ValidationService]    // This should be singleton
 })

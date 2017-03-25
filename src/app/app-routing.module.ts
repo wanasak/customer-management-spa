@@ -5,10 +5,13 @@ import { RouterModule, Routes, PreloadAllModules, NoPreloading } from '@angular/
 import { PreloadModulesStrategy } from './core/strategies/preload-modules.strategy';
 
 const app_routes: Routes = [
+    { path: '', pathMatch: 'full', redirectTo: '/customers' },
     { path: 'customers', loadChildren: 'app/customers/customers.module#CustomersModule' },
-    { path: 'about', loadChildren: 'app/about/about.module#AboutModule' } // lazy loading route
+    { path: 'customers/:id', loadChildren: 'app/customer/customer.module#CustomerModule' },
+    { path: 'about', loadChildren: 'app/about/about.module#AboutModule' }, // lazy loading route
     // Custom preloading strategy
     // { path: 'about', loadChildren: 'app/about/about.module#AboutModule', data: { preload: true } }
+    { path: '**', pathMatch: 'full', redirectTo: '/customers' } // catch any unfound routes and redirect to home page
 ];
 
 @NgModule({

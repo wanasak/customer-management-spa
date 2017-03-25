@@ -6,9 +6,9 @@
         </header>
         <br />
         <div class="row">
-            <div class="com-md-10">
+            <div class="col-md-10">
                 <div class="navbar">
-                    <ul class="nav nav-bar">
+                    <ul class="nav navbar-nav">
                         <li class="toolbar-item">
                             <a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">
                                 <span class="glyphicon glyphicon-th-large"></span> Card View
@@ -19,17 +19,20 @@
                                 <span class="glyphicon glyphicon-align-justify"></span> List View
                             </a>
                         </li>
+                        <li class="toolbar-item">
+                            <a routerLink="/customers/0/edit">
+                                <span class="glyphicon glyphicon-plus"></span> New Customer
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <!--customer-card-->
-        <app-customers-card 
-            [customers]="filteredCustomers"
-            [hidden]="displayMode !== displayModeEnum.Card">
+        <app-customers-card [customers]="filteredCustomers" [hidden]="displayMode !== displayModeEnum.Card">
         </app-customers-card>
-        
+
         <!--customers-grid-->
         <!--pagination-->
     </div>
