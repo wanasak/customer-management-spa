@@ -30,10 +30,20 @@
         </div>
 
         <!--customer-card-->
-        <app-customers-card [customers]="filteredCustomers" [hidden]="displayMode !== displayModeEnum.Card">
+        <app-customers-card [customers]="filteredCustomers" 
+            [hidden]="displayMode !== displayModeEnum.Card">
         </app-customers-card>
 
         <!--customers-grid-->
+        <app-customers-grid [customers]="filteredCustomers"
+            [hidden]="displayMode !== displayModeEnum.Grid">
+        </app-customers-grid>
+
         <!--pagination-->
+        <app-pagination [totalItems]="totalRecords"
+            [pageSize]="pageSize"
+            (pageChanged)="pageChanged($event)">
+        </app-pagination>
+
     </div>
 </div>
