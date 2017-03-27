@@ -19,10 +19,10 @@
                     <tbody>
                         <tr *ngFor="let customer of customers; trackBy: trackbyService.customer">
                             <td>
-                                <img src="images/{{ customer.gender | lowercase }}.png" class="grid-image" alt="Customer Image" />
+                                <img src="assets/images/{{ customer.gender | lowercase }}.png" class="grid-image" alt="Customer Image" />
                             </td>
                             <td><a [routerLink]="['/customers', customer.id, 'details']">{{ customer.firstName | capitalize }}</a></td>
-                            <td>{{ customer.lastName | capitalize</td>
+                            <td>{{ customer.lastName | capitalize }}</td>
                             <td>{{ customer.address }}</td>
                             <td>{{ customer.city | trim }}</td>
                             <td>{{ customer.state.name }}</td>
