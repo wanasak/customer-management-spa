@@ -1,4 +1,4 @@
-<nav [hidden]="isVisible">
+<nav [hidden]="!isVisible">
     <ul class="pagination">
         <!--previous button-->
         <li [class.disabled]="!previousEnabled"

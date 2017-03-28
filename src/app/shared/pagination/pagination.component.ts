@@ -18,12 +18,10 @@ export class PaginationComponent implements OnInit {
     previousEnabled = false;
     nextEnabled = true;
 
+    @Output() pageChanged: EventEmitter<number> = new EventEmitter<number>();
+
     @Input() get pageSize(): number {
         return this.pagerPageSize;
-    }
-
-    @Input() get totalItems(): number {
-        return this.pagerTotalItems;
     }
 
     set pageSize(size: number) {
@@ -31,7 +29,14 @@ export class PaginationComponent implements OnInit {
         this.update();
     }
 
-    @Output() pageChanged: EventEmitter<number> = new EventEmitter<number>();
+    @Input() get totalItems(): number {
+        return this.pagerTotalItems;
+    }
+
+    set totalItems(itemCount: number) {
+        this.pagerTotalItems = itemCount;
+        this.update();
+    }
 
     constructor() { }
 

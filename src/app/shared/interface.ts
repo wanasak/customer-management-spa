@@ -5,7 +5,7 @@ export interface IUserLogin {
 export interface ICustomer {
     id: number;
     firstName: string;
-    lastName; string;
+    lastName: string;
     gender: string;
     address: string;
     city: string;

@@ -12,17 +12,17 @@ import { ICustomer, IOrder, IPagedResult, IState } from '../../shared/interface'
 @Injectable()
 export class DataService {
 
-    customerBaseUrl: string = 'api/customers';
-    orderBaseUrl: string = 'api/orders';
+    customerBaseUrl = 'http://localhost:50972/api/customers';
+    orderBaseUrl = 'api/orders';
     customers: ICustomer[];
     orders: IOrder[];
 
     constructor(private http: Http) { }
 
     getCustomerPage(page: number, pageSize: number): Observable<IPagedResult<ICustomer[]>> {
-        return this.http.get(`${this.customerBaseUrl}/page/${pageSize}`)
+        return this.http.get(`${this.customerBaseUrl}/page/${page}/${pageSize}`)
             .map((res: Response) => {
-                const totalRecords = +res.headers.get('X-InlineCount');
+                const totalRecords = +res.headers.get('TotalItemsCount');
                 let customers = res.json();
                 this.calculateCustomerOrderTotal(customers);
                 return {
@@ -81,7 +81,7 @@ export class DataService {
         for (let customer of customers) {
             if (customer && customer.orders) {
                 let total = 0;
-                for (let order of customer.orders) {
+                for (const order of customer.orders) {
                     total += order.itemCost;
                 }
                 customer.orderTotal = total;
