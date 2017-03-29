@@ -11,24 +11,24 @@
                 <div class="row" *ngFor="let customer of customers; trackBy: trackByService.customer">
                     <h4>{{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>
                     <br />
-                    <table *ngIf="customer.orders && customer.order.length" class="table table-striped table-hover orders-table">
-                        <tr *ngFor="let order of customer.oreders; trackBy: trackByService.order">
+                    <table *ngIf="customer.orders && customer.orders.length" class="table table-striped table-hover orders-table">
+                        <tr *ngFor="let order of customer.orders; trackBy: trackByService.order">
                             <td>{{ order.productName }}</td>
                             <td class="text-right">{{ order.itemCost | currency:'USD':true }}</td>
                         </tr>
                         <tr class="summary-border">
                             <td>&nbsp;</td>
-                            <td class="text-right">{{ customer.orderTotal | currency:'USD':true }}</td>
+                            <td class="text-right"><b>{{ customer.orderTotal | currency:'USD':true }}</b></td>
                         </tr>
                     </table>
                     <div *ngIf="!customer.orders || !customer.orders.length">
                         No order found
                     </div>
-                    <app-pagination [hidden]="!customers"
+                </div>
+                <app-pagination [hidden]="!customers"
                         [totalItems]="totalRecords"
                         [pageSize]="pageSize"
-                        (pageChange)="pageChanged($event)"></app-pagination>
-                </div>
+                        (pageChanged)="pageChanged($event)"></app-pagination>
             </div>
             <div *ngIf="!customers">
                 No customers found

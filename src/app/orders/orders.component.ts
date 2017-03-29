@@ -29,7 +29,7 @@ export class OrdersComponent implements OnInit {
     }
 
     getCustomersPage(page: number) {
-        this.dataService.getCustomerPage((page - 1) * this.pageSize, this.pageSize)
+        this.dataService.getCustomerPage(page, this.pageSize)
             .subscribe((res: IPagedResult<ICustomer[]>) => {
                 this.totalRecords = res.totalRecords;
                 this.customers = res.results;
