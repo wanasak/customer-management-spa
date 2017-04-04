@@ -8,12 +8,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { ICustomer, IOrder, IPagedResult, IState } from '../../shared/interface';
+import { SERVER_URL } from './config.service';
 
 @Injectable()
 export class DataService {
 
-    customerBaseUrl = 'http://localhost:50972/api/customers';
-    orderBaseUrl = 'api/orders';
+    customerBaseUrl = `${SERVER_URL}/customers`;
+    // orderBaseUrl = `${SERVER_URL}/orders`;
     customers: ICustomer[];
     orders: IOrder[];
 
@@ -60,19 +61,19 @@ export class DataService {
     }
 
     updateCustomer(customer: ICustomer): Observable<boolean> {
-        return this.http.put(this.customerBaseUrl + '/' + customer.id, customer)
-            .map((res: Response) => res.json())
+        return this.http.put(this.customerBaseUrl + '/' + customer.customerId, customer)
+            .map((res: Response) => { return; })
             .catch(this.handleError);
     }
 
     deleteCustomer(id: number): Observable<boolean> {
         return this.http.delete(this.customerBaseUrl + '/' + id)
-            .map((res: Response) => res.json())
+            .map((res: Response) => { return; })
             .catch(this.handleError);
     }
 
     getStates(): Observable<IState[]> {
-        return this.http.get('/api/states')
+        return this.http.get(`${this.customerBaseUrl}/states`)
             .map((res: Response) => res.json())
             .catch(this.handleError);
     }

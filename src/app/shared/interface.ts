@@ -3,7 +3,7 @@ export interface IUserLogin {
     password: string;
 }
 export interface ICustomer {
-    id: number;
+    customerId: number;
     firstName: string;
     lastName: string;
     gender: string;
