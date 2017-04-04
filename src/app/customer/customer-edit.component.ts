@@ -10,13 +10,13 @@ import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.serv
 @Component({
     moduleId: module.id,
     selector: 'app-customer-edit',
-    template: 'customer-edit.component.html'
+    templateUrl: 'customer-edit.component.html'
 })
 export class CustomerEditComponent implements OnInit {
 
     customer: ICustomer =
     {
-        id: 0,
+        customerId: 0,
         firstName: '',
         lastName: '',
         gender: '',
@@ -63,7 +63,7 @@ export class CustomerEditComponent implements OnInit {
     }
 
     submit() {
-        if (this.customer.id === 0) {
+        if (this.customer.customerId === 0) {
             this.dataService.insertCustomer(this.customer)
                 .subscribe((insertedCustomer: ICustomer) => {
                     if (insertedCustomer) {
@@ -78,17 +78,15 @@ export class CustomerEditComponent implements OnInit {
                 }, err => console.error(err));
         } else {
             this.dataService.updateCustomer(this.customer)
-                .subscribe((status: boolean) => {
-                    if (status) {
-                        // Mark form as markAsPristine
-                        this.customerForm.form.markAsPristine();
-                        this.growler.growl('Updated customer successfully', GrowlerMessageType.Success);
-                    } else {
-                        const msg = 'Unable to update customer';
-                        this.growler.growl(msg, GrowlerMessageType.Danger);
-                        this.errorMessage = msg;
-                    }
-                }, err => console.error(err));
+                .subscribe(() => {
+                    // Mark form as markAsPristine
+                    this.customerForm.form.markAsPristine();
+                    this.growler.growl('Updated customer successfully', GrowlerMessageType.Success);
+                }, err => {
+                    const msg = 'Unable to update customer';
+                    this.growler.growl(msg, GrowlerMessageType.Danger);
+                    this.errorMessage = msg;
+                });
         }
     }
 
@@ -99,14 +97,10 @@ export class CustomerEditComponent implements OnInit {
 
     delete(event: Event) {
         event.preventDefault();
-        this.dataService.deleteCustomer(this.customer.id)
-            .subscribe((status: boolean) => {
-                if (status) {
-                    this.router.navigate(['/customers']);
-                } else {
-                    this.errorMessage = 'Unable to delete this customer';
-                }
-            }, err => console.error(err));
+        this.dataService.deleteCustomer(this.customer.customerId)
+            .subscribe(() => {
+                this.router.navigate(['/customers']);
+            }, err => this.errorMessage = 'Unable to delete this customer');
     }
 
     canDeactive(): Promise<boolean> | boolean {
