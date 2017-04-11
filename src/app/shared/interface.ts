@@ -3,7 +3,7 @@ export interface IUserLogin {
     password: string;
 }
 export interface ICustomer {
-    customerId: number;
+    id: number;
     firstName: string;
     lastName: string;
     gender: string;
@@ -14,6 +14,7 @@ export interface ICustomer {
     orderTotal?: number;
     latitude?: number;
     longitude?: number;
+    stateId: number;
 }
 export interface IState {
     abbreviation: string;

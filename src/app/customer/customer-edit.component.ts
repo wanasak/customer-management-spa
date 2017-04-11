@@ -16,7 +16,7 @@ export class CustomerEditComponent implements OnInit {
 
     customer: ICustomer =
     {
-        customerId: 0,
+        id: 0,
         firstName: '',
         lastName: '',
         gender: '',
@@ -25,7 +25,8 @@ export class CustomerEditComponent implements OnInit {
         state: {
             abbreviation: '',
             name: ''
-        }
+        },
+        stateId: 1
     };
     states: IState[];
     errorMessage: string;
@@ -63,19 +64,17 @@ export class CustomerEditComponent implements OnInit {
     }
 
     submit() {
-        if (this.customer.customerId === 0) {
+        if (this.customer.id === 0) {
             this.dataService.insertCustomer(this.customer)
-                .subscribe((insertedCustomer: ICustomer) => {
-                    if (insertedCustomer) {
-                        // Mark form as markAsPristine
-                        this.customerForm.form.markAsPristine();
-                        this.router.navigate(['/customers']);
-                    } else {
-                        const msg = 'Unable to insert customer';
-                        this.growler.growl(msg, GrowlerMessageType.Danger);
-                        this.errorMessage = msg;
-                    }
-                }, err => console.error(err));
+                .subscribe(() => {
+                    // Mark form as markAsPristine
+                    this.customerForm.form.markAsPristine();
+                    this.router.navigate(['/customers']);
+                }, err => {
+                    const msg = 'Unable to insert customer';
+                    this.growler.growl(msg, GrowlerMessageType.Danger);
+                    this.errorMessage = msg;
+                });
         } else {
             this.dataService.updateCustomer(this.customer)
                 .subscribe(() => {
@@ -97,7 +96,7 @@ export class CustomerEditComponent implements OnInit {
 
     delete(event: Event) {
         event.preventDefault();
-        this.dataService.deleteCustomer(this.customer.customerId)
+        this.dataService.deleteCustomer(this.customer.id)
             .subscribe(() => {
                 this.router.navigate(['/customers']);
             }, err => this.errorMessage = 'Unable to delete this customer');

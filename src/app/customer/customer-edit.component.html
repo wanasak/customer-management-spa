@@ -28,17 +28,18 @@
         <div class="form-group">
             <label for="state">State</label>
             <select name="state" class="form-control" [(ngModel)]="customer.stateId" required>
-                <option *ngFor="let state of states" [ngValue]="state.stateId">{{ state.name }}</option>
+                <option *ngFor="let state of states" [ngValue]="state.id">{{ state.name }}</option>
             </select>
         </div>
+        <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
         <div *ngIf="customer">
             <!--confirm delete alert-->
-            <div class="alert alert-warning" *ngIf="customer.customerId && deleteMessageEnabled">
+            <div class="alert alert-warning" *ngIf="customer.id && deleteMessageEnabled">
                 Delete Customer?&nbsp; <button class="btn btn-danger" (click)="delete($event)">Delete</button>
                 <button class="btn btn-default" (click)="deleteMessageEnabled = false">Cancel</button>
             </div>
             <!--delete button-->
-            <button class="btn btn-danger" *ngIf="customer.customerId && !deleteMessageEnabled" (click)="deleteMessageEnabled = true">
+            <button class="btn btn-danger" *ngIf="customer.id && !deleteMessageEnabled" (click)="deleteMessageEnabled = true">
                 Delete
             </button>
             <!--update button-->
@@ -51,6 +52,5 @@
                 </button>
             </div>
         </div>
-        <div class="alert-alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
     </form>
 </div>

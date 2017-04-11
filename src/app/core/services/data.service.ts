@@ -54,14 +54,14 @@ export class DataService {
             .catch(this.handleError);
     }
 
-    insertCustomer(customer: ICustomer): Observable<ICustomer> {
+    insertCustomer(customer: ICustomer): Observable<boolean> {
         return this.http.post(this.customerBaseUrl, customer)
-            .map((res: Response) => res.json())
+            .map((res: Response) => { return; })
             .catch(this.handleError);
     }
 
     updateCustomer(customer: ICustomer): Observable<boolean> {
-        return this.http.put(this.customerBaseUrl + '/' + customer.customerId, customer)
+        return this.http.put(this.customerBaseUrl + '/' + customer.id, customer)
             .map((res: Response) => { return; })
             .catch(this.handleError);
     }
