@@ -19,7 +19,7 @@ export class CustomerEditComponent implements OnInit {
         id: 0,
         firstName: '',
         lastName: '',
-        gender: '',
+        gender: 'M',
         address: '',
         city: '',
         state: {

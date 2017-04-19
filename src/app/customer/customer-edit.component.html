@@ -12,6 +12,12 @@
             <input type="text" class="form-control" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel" required>
             <div class="alert alert-danger" [hidden]="lastName.pristine || lastName.valid">Last Name is required</div>
         </div>
+        <!--gender-->
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <label class="radio-inline"><input type="radio" name="optradio" [(ngModel)]="customer.gender" value="M">Male</label>
+            <label class="radio-inline"><input type="radio" name="optradio" [(ngModel)]="customer.gender" value="F">Female</label>
+        </div>
         <!--address input-->
         <div class="form-group">
             <label for="address">Address</label>
