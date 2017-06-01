@@ -1,6 +1,6 @@
 # Customer Management SPA
 
-This project is a basic CRUD applition with Angular and need to run with the backend [here](https://github.com/wanasak/customer-management-api)
+I did not created this project from the scratch actually I have cracked the code from the original [here](https://github.com/DanWahlin/CustomerManager). It required the [backend part](https://github.com/wanasak/customer-management-api) for running.
 
 # How to run
 1) npm install
