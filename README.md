@@ -1,6 +1,6 @@
 # Customer Management SPA
 
-I did not created this project from the scratch actually I have cracked the code from the original source [here](https://github.com/DanWahlin/CustomerManager). It required the [backend part](https://github.com/wanasak/customer-management-api) for running.
+I did not created this project from the scratch actually I have cracked the code from the original source [here](https://github.com/DanWahlin/CustomerManager). This project also required the [backend part](https://github.com/wanasak/customer-management-api) running as a web server.
 
 ### How to run
 1) npm install
